@@ -1438,7 +1438,7 @@ body {
     left: -135px;
     top: 0;
     display: none;
-    z-index: 999999;
+    z-index: 10;
 }
 
 .weixin2 img {
