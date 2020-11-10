@@ -155,3 +155,39 @@ $(".weixin_box").hover(
         });
     }
 );
+// 京东倒计时
+let hous = document.getElementsByClassName("hous")[0]
+let minute = document.getElementsByClassName("minute")[0]
+let second = document.getElementsByClassName("second")[0]
+let jieshu = document.getElementsByClassName("jieshu")[0]
+
+function time(dat) {
+    var nowDate = new Date();
+    var hs = Math.floor((dat - nowDate) / 1000);
+    var h = Math.floor(hs / 3600);
+    var m = Math.floor(hs / 60 % 60);
+    var s = Math.floor(hs % 60);
+
+    function format(num) {
+        return num < 10 ? "0" + num : num;
+    }
+    h = format(h);
+    m = format(m);
+    s = format(s);
+    hous.innerText = h;
+    minute.innerText = m;
+    second.innerText = s;
+    if (hs <= 0) {
+        clearInterval(timer);
+        jieshu.innerText = "秒杀结束";
+    }
+}
+
+var oDate = new Date("2020/11/11 16:19:20");
+time(oDate);
+var timer = setInterval(function() {
+    time(oDate);
+    if (h == 0 || m == 0 || s == 0) {
+        clearInterval(timer)
+    }
+}, 1000)
