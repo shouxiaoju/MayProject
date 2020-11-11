@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="css/lognIn.css">
+</head>
+
+<body>
+    <div id="main">
+        <div class="logo"><img src="img/mistore_logo.png" alt=""></div>
+        <img src="img/background.jpg" alt="">
+        <div class="content">
+            <div class="login">
+                <ul class="nav clean">
+                    <li style="color: #ff6700;">账号登录</li>
+                    <li>扫码登录</li>
+                </ul>
+                <div class="login_cont active">
+                    <div class="login_inp">
+                        <input type="text" id="username" placeholder="邮箱/手机号码/小米ID">
+                        <div class="username"></div>
+                        <input type="password" id="password" placeholder="密码">
+                        <div class="password"></div>
+                    </div>
+                    <span class="buttn">登录</span>
+                    <span class="login_phone">手机短信登录/注册</span>
+                    <ul class="clean">
+                        <a href="register.html">
+                            <li>立即注册</li>
+                        </a>
+                        <li>忘记密码</li>
+                    </ul>
+                </div>
+                <div class="login_cont2">
+                    <img src="img/QR-code-2.png" alt="" class="QR-code">
+                    <p>使用 <span>小米商城APP</span> 扫一扫</p>
+                    <p>小米手机可打开「设置」>「小米帐号」扫码登录</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/lognIn.js"></script>
+</body>
+
+</html>
