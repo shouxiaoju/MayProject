@@ -198,3 +198,12 @@ var timer = setInterval(function () {
     clearInterval(timer);
   }
 }, 1000);
+var arr = '';
+axios.get("http://localhost:3000/shangpin", {}).then(function (res) {
+  for (var i in res.data) {
+    arr += "\n           <a href=\"list.html?id=".concat(res.data[i].id, "\" target=\"_blank\" data-id=").concat(res.data[i].id, ">\n                <img src=\"").concat(res.data[i].img, "\" alt=\"\">\n                <h3>").concat(res.data[i].nem, "</h3>\n                <span>").concat(res.data[i].peizhi, "</span>\n                <span>").concat(res.data[i].jag, "\u5143<del>").concat(res.data[i].jj, "</del></span>\n            </a>\n           ");
+  }
+
+  var odiv1 = document.getElementsByClassName("shouji_right")[0];
+  odiv1.innerHTML = arr;
+});
