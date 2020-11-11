@@ -1,0 +1,256 @@
+body,
+ul,
+li,
+dl,
+dt,
+dd,
+p,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+img,
+table,
+fieldset,
+legend,
+figure,
+figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 12px;
+    font-family: "微软雅黑";
+}
+
+
+/* 取消列表符号 */
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+
+/* 取消字体加粗 */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+    font-weight: normal;
+}
+
+
+/* 取消下划线 */
+
+a,
+u {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* 取消字体倾斜 */
+
+em,
+i {
+    font-style: normal;
+}
+
+
+/* 图片3px */
+
+img {
+    display: block;
+}
+
+
+/* 取消蓝色边框 */
+
+input,
+a {
+    outline: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clean:after {
+    content: '.';
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+
+/* ie6 兼容 */
+
+.clean {
+    zoom: 1;
+}
+
+$main-color:#ff6700;
+$font-color:#999999;
+#main {
+    position: relative;
+    width: 100%;
+    height: auto;
+    >img {
+        position: relative;
+        left: 50%;
+        margin-left: -1280px;
+    }
+    .logo {
+        width: 1130px;
+        margin: 0 auto;
+    }
+    .content {
+        width: 1130px;
+        margin-left: -565px;
+        position: absolute;
+        top: 126px;
+        left: 50%;
+        height: 100%;
+        .login {
+            width: 410px;
+            height: 560px;
+            background-color: white;
+            position: absolute;
+            right: 0;
+            &:hover {
+                cursor: pointer;
+            }
+            .login_cont {
+                display: none;
+                width: 100%;
+                .login_inp {
+                    position: relative;
+                    input {
+                        border: none;
+                        font-size: 14px;
+                    }
+                    .username {
+                        width: 350px;
+                        height: 50px;
+                        margin: 0 auto;
+                        border: 1px solid #dddddd;
+                        color: $font-color;
+                        font-size: 14px;
+                        line-height: 50px;
+                    }
+                    [type='text'] {
+                        width: 340px;
+                        height: 40px;
+                        position: absolute;
+                        left: 30px;
+                        top: 6px;
+                        background-color: transparent;
+                    }
+                    .password {
+                        width: 350px;
+                        height: 50px;
+                        margin: 0 auto;
+                        border: 1px solid #dddddd;
+                        margin-top: 16px;
+                        font-size: 14px;
+                        line-height: 50px;
+                        color: $font-color;
+                    }
+                    [type='password'] {
+                        width: 340px;
+                        height: 40px;
+                        position: absolute;
+                        left: 30px;
+                        top: 56px;
+                        background-color: transparent;
+                        margin-top: 20px;
+                    }
+                }
+                .buttn {
+                    width: 350px;
+                    height: 50px;
+                    background-color: $main-color;
+                    display: block;
+                    margin: 24px 30px;
+                    color: white;
+                    font-size: 14px;
+                    line-height: 50px;
+                    text-align: center;
+                }
+                .login_phone {
+                    display: block;
+                    width: 116px;
+                    height: 12px;
+                    color: $main-color;
+                    margin: 0 auto;
+                }
+                >ul {
+                    width: 140px;
+                    margin: 36px auto;
+                }
+                >ul li {
+                    float: left;
+                    font-size: 14px;
+                    color: $font-color;
+                    width: 68px;
+                    height: 14px;
+                    &:nth-of-type(1) {
+                        border-right: 1px solid $font-color;
+                    }
+                    ;
+                    line-height: 14px;
+                    text-align: center;
+                }
+            }
+            .login_cont2 {
+                display: none;
+                .QR-code {
+                    margin: 120px auto;
+                    margin-bottom: 20px;
+                }
+                >p {
+                    font-size: 14px;
+                    color: $font-color;
+                    text-align: center;
+                    span {
+                        color: $main-color;
+                    }
+                }
+            }
+            .active {
+                display: block;
+            }
+            .nav {
+                margin: 30px auto;
+                >li {
+                    float: left;
+                    font-size: 22px;
+                    width: 200px;
+                    text-align: center;
+                    color: rgba($color: #666666, $alpha: 1.0);
+                    &:nth-of-type(1) {
+                        border-right: rgba($color: $font-color, $alpha: 0.5) 2px solid;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,197 @@
+    /* 重置样式 */
+    
+    body,
+    ul,
+    dl,
+    dt,
+    dd,
+    p,
+    ol,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    form,
+    img,
+    table,
+    figure,
+    figcaption,
+    fieldset,
+    legend {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ul,
+    li,
+    ol {
+        list-style: none;
+    }
+    
+    img,
+    fieldset {
+        border: 0;
+    }
+    
+    h2,
+    span {
+        display: inline-block;
+    }
+    
+    img {
+        display: block;
+    }
+    
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: #333;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 100;
+    }
+    
+    input,
+    a {
+        outline: none;
+    }
+    
+    html,
+    body {
+        width: 100%;
+        position: relative;
+        background: #e8e8e8;
+    }
+    
+    $main-color:#ff6700#ff6700;
+    $font-color:#333333;
+    $border-color:#e8e8e8;
+    #main {
+        margin: 80px auto;
+        width: 1080px;
+        height: 860px;
+        background: #ffffff;
+        position: relative;
+        .logo-pic {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        >p {
+            &:nth-of-type(1) {
+                font-size: 36px;
+                margin: 60px auto;
+                display: block;
+                width: 220px;
+            }
+            // &:nth-of-type(2){font-size:16px;color: $font-color;display: block;
+        }
+        .country {
+            width: 422px;
+            height: 116px;
+            margin: 60px auto;
+            p {
+                font-size: 16px;
+                color: $font-color;
+            }
+            div {
+                width: 420px;
+                height: 50px;
+                border: 1px solid $border-color;
+                margin: 10px auto;
+                font-size: 16px;
+                color: $font-color;
+                line-height: 50px;
+            }
+            span {
+                display: block;
+                width: 50px;
+                height: 50px;
+                border-left: solid 1px $border-color;
+                float: right;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .phone {
+            @extend .country;
+            width: 422px;
+            height: 88px;
+            position: relative;
+            top: -40px;
+            .phone-code {
+                position: relative;
+                .code-header {
+                    width: 86px;
+                    height: 50px;
+                    border-right: 1px solid $border-color;
+                    float: left;
+                    text-align: center;
+                }
+                .hint {
+                    color: #999999;
+                    float: left;
+                    width: 130px;
+                }
+                input {
+                    position: absolute;
+                    left: 90px;
+                    width: 326px;
+                    height: 43px;
+                    background-color: transparent;
+                    border: none;
+                    font-size: 18px;
+                    top: 4px;
+                }
+            }
+        }
+        .password {
+            position: relative;
+            top: -86px;
+        }
+        .tishi {
+            width: 200px;
+            height: 20px;
+            position: absolute;
+            left: 330px;
+            top: 560px;
+        }
+        .buttn {
+            width: 422px;
+            height: 50px;
+            background-color: #ff6700;
+            margin: 70px auto 0;
+            font-size: 18px;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            position: relative;
+            top: -100px;
+        }
+        .del {
+            width: 340px;
+            display: block;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #999999;
+            span {
+                font-weight: 700;
+                color: $font-color;
+            }
+        }
+    }
