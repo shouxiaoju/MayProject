@@ -1,19 +1,21 @@
 axios.get("http://localhost:3000/cart", {}).then(res => {
+
     var str = ''
     for (let i in res.data) {
+        var id1 = res.data[i].id
         str += `
-                <li >
+                <li>
                     <input type="checkbox" class="ck">
-                     <img src="${res.data[i].img}" alt="">
-                     <h3>商品名:${res.data[i].nem}</h3>
-                     </br>
-                     <span class="perPrice">${res.data[i].jag}</span>
-                     </br>
-                     <span id='minus'>-</span><input type="text" value="${res.data[i].num}" class="num"><span id="pius">+</span>
-                     </br>
-                     <span>单个总价<span>
-                     <span class="perTotalPrice">${res.data[i].jag*res.data[i].num}</span>
-                     </br>
+                    <img src="${res.data[i].img}" alt="">
+                    <h3>商品名:${res.data[i].nem}</h3>
+                    <span>单价</span>
+                    <span class="perPrice">${res.data[i].jag}</span>
+                    </br>
+                    <span id='minus'>-</span><input type="text" value="${res.data[i].num}" class="num"><span id="pius">+</span>
+                    </br>
+                    <span>单个总价<span>
+                    <span class="perTotalPrice">${res.data[i].jag*res.data[i].num}</span>
+                    </br>
                     <span class="del" uid="${res.data[i].id}" > 删除x</span>
                     </br>
                 </li>
@@ -64,16 +66,20 @@ axios.get("http://localhost:3000/cart", {}).then(res => {
                 num[i].value--;
                 if (num[i].value < 1) {
                     num[i].value = 1;
-
                 }
-
+                axios.patch(`http://localhost:3000/cart/${id1}`, {
+                    num: num[i].value
+                })
                 updateData(i);
-
+                console.log(id1)
             }
             //加
         plus[i].onclick = () => {
                 num[i].value++;
                 updateData(i);
+                axios.patch(`http://localhost:3000/cart/${id1}`, {
+                    num: num[i].value
+                })
             }
             //改input
         num[i].onchange = () => {
@@ -93,17 +99,19 @@ axios.get("http://localhost:3000/cart", {}).then(res => {
 
     function getTotalPrice() {
         let totalPrice = document.getElementById("totalPrice");
-        let price = "总价:";
+        let price = 0;
         for (let i = 0; i < cks.length; i++) {
             if (cks[i].checked) {
-                price += +perTotalPrice[i].innerText + "元";
+                price += +perTotalPrice[i].innerText;
             }
         }
         totalPrice.innerText = price;
     }
 
     $(".del").click(function() {
-        axios.delete(`http://localhost:3000/cart/${$(this).attr("uid")}`, location.reload())
+        $(this).parents("li").remove()
+        axios.delete(`http://localhost:3000/cart/${$(this).attr("uid")}`, {}).then(arr => {
+            getTotalPrice();
+        })
     })
-
 })

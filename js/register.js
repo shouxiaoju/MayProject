@@ -31,6 +31,5 @@ but[0].onclick = function() {
                 window.location.href = "lognIn.html"
             }
         })
-
     }
 }

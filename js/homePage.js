@@ -55,6 +55,18 @@ $(".nav_right").mouseout(function() {
         "color": "#b0b0b0"
     })
 });
+
+axios.get("http://localhost:3000/cart", {}).then(res => {
+    if (res.data.length == 0) {
+        $(".moren").text("购物车中还没有商品 赶紧选购吧")
+        $("#shuliang").text("(0)")
+    } else {
+        $(".moren").text("商品数量:" + res.data.length)
+        $("#shuliang").text(res.data.length)
+    }
+})
+
+
 /* 轮播图1 */
 var swiper = new Swiper('#swidth1', {
     spaceBetween: 30,
@@ -146,7 +158,8 @@ $("#hdtop").click(function() {
 $(".weixin_box").hover(
     function() {
         $(".weixin2").css({
-            "display": "block"
+            "display": "block",
+            "z-index": "99"
         });
     },
     function() {
@@ -183,19 +196,15 @@ function time(dat) {
     }
 }
 
-var oDate = new Date("2020/11/11 16:19:20");
+var oDate = new Date("2020/11/13 0:0:0");
 time(oDate);
 var timer = setInterval(function() {
     time(oDate);
-    if (h == 0 || m == 0 || s == 0) {
-        clearInterval(timer)
-    }
 }, 1000)
 
 
 var arr = '';
 axios.get("http://localhost:3000/shangpin", {}).then(res => {
-
     for (let i in res.data) {
         arr += `
            <a href="list.html?id=${res.data[i].id}" target="_blank" data-id=${res.data[i].id}>
@@ -208,6 +217,8 @@ axios.get("http://localhost:3000/shangpin", {}).then(res => {
     }
 
     var odiv1 = document.getElementsByClassName("shouji_right")[0]
+
     odiv1.innerHTML = arr
+
 
 })
