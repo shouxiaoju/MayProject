@@ -55,23 +55,22 @@
                         <img src="img/wx-img.png" alt="">
                         <p>小米商城APP</p>
                     </div>
-
                 </div>
                 <!-- 右导航 -->
                 <a class="nav_right" href="carlist.html" target="_blank">
                     <span class="iconfont icongouwuche"></span>
                     <span>购物车</span>
-                    <span>(0)</span>
+                    <span id="shuliang">(0)</span>
                     <!-- 购物车下拉 -->
                     <div id="gocar">
-                        <p class="moren">购物车中还没有商品 赶紧选购吧</p>
+                        <p class="moren" id="moren1"></p>
                     </div>
                 </a>
                 <!-- 中间导航 -->
                 <div class="nav_center">
-                    <a href="lognIn.html">登录</a>
+                    <a href="lognIn.html" target="_blank">登录</a>
                     <span>|</span>
-                    <a href="register.html">注册</a>
+                    <a href="register.html" target="_blank">注册</a>
                     <span>|</span>
                     <a href="#" style="margin-left: 10px;">消息通知</a>
                 </div>
@@ -97,7 +96,9 @@
                 <a>智能硬件</a>
                 <a>服务</a>
                 <a>社区</a>
+
             </div>
+
             <!-- 头部的底部导航下拉 -->
             <div>
 
@@ -408,9 +409,9 @@
                     </div>
                 </a>
                 <!-- 手机图片 -->
-                <div id="shouji">
+                <div id="shouji" style="z-index: 1;">
                     <img id="xm" style="width: 234px;height: 614px;display: block;float: left;" src="img/tu1.jpg" alt="">
-                    <div class="shouji_right">
+                    <div class="shouji_right" style="z-index: 1;">
                         <!-- <a href="">
                             <img src="img/shouji1.jpg" alt="">
                             <h3>小米10 至尊版</h3>
@@ -419,8 +420,8 @@
                         </a>
                         <a href="">
                             <img src="img/shouji2.jpg" alt="">
-                            <h3>小米10 至尊版</h3>
-                            <span>120X 变焦/120W秒充/120Hz屏幕</span>
+                            <h3>Redmi K30S 至尊纪念版</h3>
+                            <span>120X 144Hz[7档]变速高刷屏</span>
                             <span>5299元起</span>
                         </a>
                         <a href="">
@@ -1069,10 +1070,8 @@
         <a class="weixin_box" href="" style="position: relative;">
             <span class="iconfont iconshouji"></span>
             <span>手机APP</span>
-            <div class="weixin2">
-                <img src="img/wx-img.png" alt=""> 扫描领取新人百元礼包
-            </div>
         </a>
+
         <a href="">
             <span class="iconfont icongerenzhongxinwoderenwubiaozhuntouxianxing"></span>
             <span>个人中心</span>
@@ -1086,7 +1085,7 @@
             "></span>
             <span>人工服务</span>
         </a>
-        <a href="" style="margin-bottom: 15px;">
+        <a href="carlist.html" target="_blank" style="margin-bottom: 15px;">
             <span class="iconfont icongouwuche"></span>
             <span>购物车</span>
         </a>
@@ -1094,6 +1093,9 @@
             <span class="iconfont icondingbu" style="margin: 10px 0;"></span>
             <span>回到顶部</span>
         </a>
+    </div>
+    <div class="weixin2" style="z-index: 999;">
+        <img src="img/wx-img.png" alt=""> 扫描领取新人百元礼包
     </div>
     <!-- 引入js -->
     <script src="js/jquery-1.11.0.js"></script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #detail img {
+            width: 300px;
+            height: 300px;
+        }
+        
+        #detail h3 {
+            width: 300px;
+            text-align: center;
+        }
+        
+        #detail span {
+            display: inline-block;
+        }
+        
+        #detail span:nth-of-type(1) {
+            width: 350px;
+            height: 30px;
+            line-height: 30px;
+        }
+        
+        #detail span:nth-of-type(2) {
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+        }
+        
+        #detail #abtn {
+            width: 100px;
+            height: 30px;
+            margin: 30px 0 0 30px;
+        }
+        
+        #detail del {
+            margin-left: 6px;
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="detail">
+
+    </div>
+    <script>
+        let Id = location.search.split("=")[1];
+
+        var newarr = ''
+        axios.get("http://localhost:3000/shangpin", {
+            params: {
+                id: Id
+            }
+        }).then(res => {
+            newarr += `
+                     <img src="${res.data[0].img}" alt="">
+                     <h3>商品名:${res.data[0].nem}</h3>
+                     <span>商品信息:${res.data[0].peizhi}</span>
+                     </br>
+                     <span>商品价格:${res.data[0].jag}<del>${res.data[0].jj}</del></span>
+                     </br>
+                     <span id='minus'>-</span><input type="text" value="1"><span id="pius">+</span>
+                     </br>
+                    <input type="button" value="加入购物车" id="abtn">
+                `
+            let oDetail = document.getElementById("detail");
+            oDetail.innerHTML = newarr;
+            var oBtn = document.getElementById("abtn");
+            var minus = document.querySelectorAll("span")[2];
+            var plus = document.querySelectorAll("span")[3];
+            var oTxt = document.querySelectorAll("input")[0];
+            minus.onclick = function() {
+                oTxt.value--;
+                if (oTxt.value < 1) {
+                    oTxt.value = 1;
+                }
+            }
+            plus.onclick = function() {
+                oTxt.value++;
+            }
+
+            var a = 0;
+            oTxt.onchange = function() {
+                if (oTxt.value < 1) {
+                    oTxt.value = 1;
+                }
+            }
+            oBtn.onclick = function() {
+                a = parseInt(oTxt.value)
+                axios.get("http://localhost:3000/cart", {}).then(rest => {
+                    //console.log(Id)
+                    if (rest.data.length == 0) {
+                        axios.post("http://localhost:3000/cart", {
+                            id: Id,
+                            img: res.data[0].img,
+                            nem: res.data[0].nem,
+                            peizhi: res.data[0].peizhi,
+                            jag: res.data[0].jag,
+                            jj: res.data[0].jj,
+                            num: oTxt.value
+                        })
+                    } else {
+                        for (let i in rest.data) {
+                            if (Id == rest.data[i].id) {
+
+                                axios.patch(`http://localhost:3000/cart/${Id}`, {
+                                    num: parseInt(rest.data[i].num) + a
+
+                                })
+                            } else {
+                                axios.post("http://localhost:3000/cart", {
+                                    id: Id,
+                                    img: res.data[0].img,
+                                    nem: res.data[0].nem,
+                                    peizhi: res.data[0].peizhi,
+                                    jag: res.data[0].jag,
+                                    jj: res.data[0].jj,
+                                    num: oTxt.value
+                                })
+                            }
+
+                        }
+                    }
+
+
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

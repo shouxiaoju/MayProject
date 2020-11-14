@@ -1435,9 +1435,9 @@ body {
     padding: 14px;
     background: #fff;
     border: 1px solid #f5f5f5;
-    position: absolute;
-    left: -135px;
-    top: 0;
+    position: fixed;
+    right: 86px;
+    top: 89.6px;
     z-index: 99;
     display: none;
 }
@@ -1445,5 +1445,4 @@ body {
 .weixin2 img {
     width: 100px;
     height: 100px;
-    z-index: 10;
 }
