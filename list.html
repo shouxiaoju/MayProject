@@ -92,30 +92,51 @@
                 oTxt.value++;
             }
 
+            var a = 0;
             oTxt.onchange = function() {
                 if (oTxt.value < 1) {
                     oTxt.value = 1;
                 }
             }
-
             oBtn.onclick = function() {
-                var flex = true;
-                axios.get("http://localhost:3000/cart", {}).then(res => {
-                    for (let i in res.data) {
-                        if (Id == res.data[i].id) {
-                            alert("商品已存在");
+                a = parseInt(oTxt.value)
+                axios.get("http://localhost:3000/cart", {}).then(rest => {
+                    //console.log(Id)
+                    if (rest.data.length == 0) {
+                        axios.post("http://localhost:3000/cart", {
+                            id: Id,
+                            img: res.data[0].img,
+                            nem: res.data[0].nem,
+                            peizhi: res.data[0].peizhi,
+                            jag: res.data[0].jag,
+                            jj: res.data[0].jj,
+                            num: oTxt.value
+                        })
+                    } else {
+                        for (let i in rest.data) {
+                            if (Id == rest.data[i].id) {
+
+                                axios.patch(`http://localhost:3000/cart/${Id}`, {
+                                    num: parseInt(rest.data[i].num) + a
+
+                                })
+                            } else {
+                                axios.post("http://localhost:3000/cart", {
+                                    id: Id,
+                                    img: res.data[0].img,
+                                    nem: res.data[0].nem,
+                                    peizhi: res.data[0].peizhi,
+                                    jag: res.data[0].jag,
+                                    jj: res.data[0].jj,
+                                    num: oTxt.value
+                                })
+                            }
+
                         }
                     }
+
+
                 })
-                axios.post("http://localhost:3000/cart", {
-                    id: Id,
-                    img: res.data[0].img,
-                    nem: res.data[0].nem,
-                    peizhi: res.data[0].peizhi,
-                    jag: res.data[0].jag,
-                    jj: res.data[0].jj,
-                    num: oTxt.value
-                }).then(res => {})
             }
         })
     </script>

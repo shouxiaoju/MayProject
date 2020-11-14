@@ -47,7 +47,7 @@ gulp.task("babel", done => {
 });
 //img
 gulp.task("img", done => {
-        gulp.src("img/*.{jpg,png,webp}")
+        gulp.src("img/*.{jpg,png,webp,gif}")
             .pipe(gulp.dest("dist/img"))
             .pipe(connect.reload());
         done()
